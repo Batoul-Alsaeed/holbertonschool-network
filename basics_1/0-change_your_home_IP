@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
-# Configure /etc/hosts: map localhost->127.0.0.2 and facebook.com->8.8.8.8
+# Configure Ubuntu server so that:
+#   - localhost resolves to 127.0.0.2
+#   - facebook.com resolves to 8.8.8.8
 
-set -euo pipefail
-
-HOSTS_FILE="/etc/hosts"
-
-# Backup once
-if [ ! -f "${HOSTS_FILE}.bak" ]; then
-  cp "$HOSTS_FILE" "${HOSTS_FILE}.bak"
-fi
-
-# Remove existing IPv4 localhost lines (keep IPv6 ::1) and any facebook.com lines
-sed -i -E '/^127\.[0-9.]+\s+localhost(\s|$)/d' "$HOSTS_FILE"
-sed -i -E '/\sfacebook\.com(\s|$)/d' "$HOSTS_FILE"
-
-# Append the required mappings
-printf '127.0.0.2\tlocalhost\n8.8.8.8\tfacebook.com\n' >> "$HOSTS_FILE"
+echo "127.0.0.2 localhost" | sudo tee /etc/hosts > /dev/null
+echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts > /dev/null
