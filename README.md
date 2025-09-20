@@ -1,4 +1,5 @@
 # Networking Projects
+> **Holberton curriculum**, delivered in partnership with **Tuwaiq Academy** in Saudi Arabia.
 
 ## Description
 This repository contains networking projects from the **Holberton curriculum**, delivered in partnership with **Tuwaiq Academy** in Saudi Arabia.  
